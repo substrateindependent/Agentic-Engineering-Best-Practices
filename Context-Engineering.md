@@ -1,7 +1,7 @@
 # Context Engineering
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Canonical Documentation]] · [[Project Context Files]] · [[Agent Self-Verification]] · [[Externalized State]] · [[Model Routing]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Canonical Documentation](Canonical-Documentation.md) · [Project Context Files](Project-Context-Files.md) · [Agent Self-Verification](Agent-Self-Verification.md) · [Externalized State](Externalized-State.md) · [Model Routing](Model-Routing.md)
 
 ---
 
@@ -17,7 +17,7 @@ The distinction matters for a simple reason: in agentic coding, the model doesn'
 
 ## Why Context Matters More Than Model Choice
 
-This is [[AI-Coding-Best-Practices#1. Context Quality > Model Quality|Principle 1]] of the parent guide, and it's the most validated finding in the agentic coding literature. A mid-tier model with well-curated context consistently outperforms a frontier model drowning in noise.
+This is [Principle 1](AI-Coding-Best-Practices.md#1-context-quality-model-quality) of the parent guide, and it's the most validated finding in the agentic coding literature. A mid-tier model with well-curated context consistently outperforms a frontier model drowning in noise.
 
 The reason is architectural. Transformer-based models have a finite attention budget — every token in the context window competes for the model's attention. As the context grows, the model's ability to focus on what actually matters degrades. This isn't a failure of the model; it's a fundamental property of how attention mechanisms work.
 
@@ -53,9 +53,9 @@ This is the most important operation for long-running tasks. Instead of keeping 
 
 **File-system as memory.** Manus AI treats the file system as unlimited external memory. When an agent processes a large document, it compresses it to a summary plus a file reference. The compression ratio can reach 100:1 while maintaining full information recovery — because the original file is always retrievable. This insight is powerful: compression is lossless when the original is a file read away.
 
-**Canonical documentation.** In the context of AI-assisted coding, this is the [[Canonical Documentation]] pattern from the parent guide. Each feature gets a document describing what was built, how it works, and what interfaces it exposes. These docs serve as offloaded context that can be selectively loaded during the research phase of the next feature.
+**Canonical documentation.** In the context of AI-assisted coding, this is the [Canonical Documentation](Canonical-Documentation.md) pattern from the parent guide. Each feature gets a document describing what was built, how it works, and what interfaces it exposes. These docs serve as offloaded context that can be selectively loaded during the research phase of the next feature.
 
-**Build plans and checklists.** The [[Externalized State]] pattern. The agent's task list and progress live in a markdown file, not in its memory. After a context reset, the agent reads the checklist to know where it left off.
+**Build plans and checklists.** The [Externalized State](Externalized-State.md) pattern. The agent's task list and progress live in a markdown file, not in its memory. After a context reset, the agent reads the checklist to know where it left off.
 
 ### 2. Selecting Context (Retrieval)
 
@@ -101,7 +101,7 @@ Context isolation prevents pollution — where one task's context degrades anoth
 
 **The Research → Plan → Implement workflow.** HumanLayer's three-phase approach is fundamentally a context isolation strategy. Research produces a compact artifact. A new session loads that artifact and produces a plan. Another new session loads the plan and implements it. Each phase starts with clean context, inheriting only the compressed output of the previous phase — not its full conversation history.
 
-This is directly related to [[AI-Coding-Best-Practices#4. Never Let the Author Validate Their Own Work|Principle 4]] of the parent guide. Fresh-context validation isn't just about preventing confirmation bias — it's about ensuring the validator operates with clean, focused context rather than inheriting the drafter's accumulated noise.
+This is directly related to [Principle 4](AI-Coding-Best-Practices.md#4-never-let-the-author-validate-their-own-work) of the parent guide. Fresh-context validation isn't just about preventing confirmation bias — it's about ensuring the validator operates with clean, focused context rather than inheriting the drafter's accumulated noise.
 
 **`/clear` as a tool.** In interactive coding sessions, clearing the context and restarting with a focused summary is one of the most effective (and underused) context engineering techniques. Anthropic and HumanLayer both recommend this as a first step: "Next time your chat gets too long, stop. Ask it to summarize the current state and the next steps. Open a new chat, paste that summary, and continue. You will notice the difference immediately."
 
@@ -155,7 +155,7 @@ This matters less for interactive coding sessions (where latency per turn is acc
 
 ## Applying Context Engineering to the Development Loop
 
-Here's how these principles map to the [[AI-Coding-Best-Practices#The Development Loop|Development Loop]] from the parent guide:
+Here's how these principles map to the [Development Loop](AI-Coding-Best-Practices.md#the-development-loop) from the parent guide:
 
 **Step 1 (Research):** *Select* context by reading relevant canonical docs and exploring the codebase via just-in-time file reads. *Write* context by producing a canonical document that compresses your research into a high-signal artifact. At the end of research, you've created a compact document that captures everything the planning phase needs — without requiring the planning phase to repeat the exploration.
 

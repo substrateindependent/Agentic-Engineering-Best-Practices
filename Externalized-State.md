@@ -1,7 +1,7 @@
 # Externalized State
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Context Engineering]] · [[Integration Contracts]] · [[Canonical Documentation]] · [[Deterministic Sandwich]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Canonical Documentation](Canonical-Documentation.md) · [Deterministic Sandwich](Deterministic-Sandwich.md)
 
 ---
 
@@ -29,7 +29,7 @@ Cloud-based agent platforms (Claude, Cursor, etc.) have session limits — often
 
 ### Context Windows Fill Up
 
-Even with excellent context engineering, long-running tasks accumulate conversation history. The context window approaches saturation. As [[Context Engineering]] documents, performance degrades in the "smart zone" above 60% utilization. With externalized state, the agent can safely summarize and reset context mid-task, knowing that checkpoints and durable artifacts will let it recover the critical context later.
+Even with excellent context engineering, long-running tasks accumulate conversation history. The context window approaches saturation. As [Context Engineering](Context-Engineering.md) documents, performance degrades in the "smart zone" above 60% utilization. With externalized state, the agent can safely summarize and reset context mid-task, knowing that checkpoints and durable artifacts will let it recover the critical context later.
 
 ### Models Drift
 
@@ -769,7 +769,7 @@ Not every micro-decision needs to be externalized. A task is typically 30 minute
 
 ### Context Without Checkpoints
 
-Maintaining great context engineering (per [[Context Engineering]]) but never committing or checkpointing your work defeats the purpose. The checkpoint *is* what makes context engineering work. It lets you reset and reload from a known, durable state.
+Maintaining great context engineering (per [Context Engineering](Context-Engineering.md)) but never committing or checkpointing your work defeats the purpose. The checkpoint *is* what makes context engineering work. It lets you reset and reload from a known, durable state.
 
 ### Loss of Observability
 

@@ -1,7 +1,7 @@
 # Canonical Documentation
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Context Engineering]] · [[Externalized State]] · [[Integration Contracts]] · [[Project Context Files]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Context Engineering](Context-Engineering.md) · [Externalized State](Externalized-State.md) · [Integration Contracts](Integration-Contracts.md) · [Project Context Files](Project-Context-Files.md)
 
 ---
 
@@ -25,13 +25,13 @@ In AI-assisted development, canonical documentation achieves the same effect —
 
 Without canonical docs, every new feature starts from scratch. The AI re-reads the source code to understand how the booking system works, or the authentication flow, or the payment integration. It rebuilds that mental model from fragments scattered across multiple files. With canonical docs, the AI gets a curated, high-signal summary that took the previous feature's implementer 30 minutes to write — saving the next feature's implementer several hours of exploration and reconstruction.
 
-This is [[Context Engineering#1. Writing Context (Offloading)|writing context]] in action. The knowledge about what was built gets offloaded to a file, where it can be selectively retrieved.
+This is [writing context](Context-Engineering.md#1-writing-context-offloading) in action. The knowledge about what was built gets offloaded to a file, where it can be selectively retrieved.
 
 ### The Integration Failure Prevention
 
 The #1 failure mode in AI-assisted development is orphaned or disconnected code: routes that don't exist, database tables that are never used, components that aren't wired into the navigation. Canonical documentation prevents this by forcing explicit specification of integration points — what existing code this feature touches, what new interfaces it exposes, what will depend on this feature in the future.
 
-This is why [[AI-Coding-Best-Practices#7. The Integration Contract|Principle 7]] of the parent guide emphasizes the Integration Contract as part of every feature plan. Canonical documentation makes that integration explicit and permanent, so future features can learn from it.
+This is why [Principle 7](AI-Coding-Best-Practices.md#7-the-integration-contract) of the parent guide emphasizes the Integration Contract as part of every feature plan. Canonical documentation makes that integration explicit and permanent, so future features can learn from it.
 
 ---
 
@@ -206,7 +206,7 @@ When you add a new canonical doc, update the index. When you retire a feature, m
 
 ## Canonical Docs as Offloaded Context
 
-In the [[Context Engineering]] framework, canonical documentation is a technique for writing context — saving information outside the context window for later retrieval.
+In the [Context Engineering](Context-Engineering.md) framework, canonical documentation is a technique for writing context — saving information outside the context window for later retrieval.
 
 The mechanism works like this:
 

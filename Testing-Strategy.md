@@ -1,7 +1,7 @@
 # Testing Strategy
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Agent Self-Verification]] · [[Integration Contracts]] · [[Development Loop — Full Reference]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Agent Self-Verification](Agent-Self-Verification.md) · [Integration Contracts](Integration-Contracts.md) · [Development Loop — Full Reference](Development-Loop-Full-Reference.md)
 
 ---
 
@@ -13,7 +13,7 @@ This is the core insight from Qodo's 2025 research: AI-generated PRs are 18% lar
 
 This is why testing becomes your agent's self-verification mechanism. Tests don't care how the code looks; they measure what it *does*. A test suite is the agent's most direct line of evidence that its implementation works. Running tests after implementation isn't optional verification — it's the mechanism that separates shipped code from code-that-happened-to-work-in-isolation.
 
-> *See: [[Agent Self-Verification]] for how testing maps to the broader feedback loop pattern.*
+> *See: [Agent Self-Verification](Agent-Self-Verification.md) for how testing maps to the broader feedback loop pattern.*
 
 ---
 
@@ -73,7 +73,7 @@ Modern testing distinguishes between three kinds of tests, each catching differe
 
 ## "Works in Isolation" ≠ "Works in Context"
 
-This is [[AI-Coding-Best-Practices#11. "Works in Isolation" ≠ "Works in Context"|Principle 11]] from the best practices guide, and it's critical to understanding why you can't skip the full E2E suite.
+This is [Principle 11](AI-Coding-Best-Practices.md#11-works-in-isolation-works-in-context) from the best practices guide, and it's critical to understanding why you can't skip the full E2E suite.
 
 A scenario that illustrates this:
 

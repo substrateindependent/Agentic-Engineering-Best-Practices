@@ -1,7 +1,7 @@
 # Parallel Agent Workflows
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Externalized State]] · [[Integration Contracts]] · [[Development Loop — Full Reference]] · [[Project Context Files]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Externalized State](Externalized-State.md) · [Integration Contracts](Integration-Contracts.md) · [Development Loop — Full Reference](Development-Loop-Full-Reference.md) · [Project Context Files](Project-Context-Files.md)
 
 ---
 
@@ -48,7 +48,7 @@ The reality is closer to 3–4x throughput improvement than 5x, because agents n
 
 The research backing this comes from multiple sources: Boris Cherny's Claude Code workflow, Addy Osmani's experiments with backend/frontend/test agents, Cursor's "Parallel Agents" feature (built entirely on git worktrees), and internal Anthropic studies. The consistent finding: parallel independent work with disciplined merge practices produces dramatic throughput gains without quality loss.
 
-> *See: [[Development Loop — Full Reference]] for how merge discipline prevents quality degradation.*
+> *See: [Development Loop — Full Reference](Development-Loop-Full-Reference.md) for how merge discipline prevents quality degradation.*
 
 ---
 

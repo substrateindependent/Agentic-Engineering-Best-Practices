@@ -1,7 +1,7 @@
 # Project Context Files
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Context Engineering]] · [[Canonical Documentation]] · [[Externalized State]] · [[Environment Setup — Full Reference]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Context Engineering](Context-Engineering.md) · [Canonical Documentation](Canonical-Documentation.md) · [Externalized State](Externalized-State.md) · [Environment Setup — Full Reference](Environment-Setup-Full-Reference.md)
 
 ---
 
@@ -491,7 +491,7 @@ Context files aren't write-once artifacts. They evolve as your codebase evolves.
 
 **After every feature completion:**
 
-- Update canonical documentation (see [[Canonical Documentation]]).
+- Update canonical documentation (see [Canonical Documentation](Canonical-Documentation.md)).
 - Capture any architectural decisions that affect future work.
 - Note any gotchas discovered during implementation.
 
@@ -510,7 +510,7 @@ Teams that treat this as a living process report that within 3–4 features, the
 ### Starter Templates
 
 - **abhishekray07/claude-md-templates** — Ready-made CLAUDE.md templates for popular stacks (React, Node, Python, Rust).
-- **Anthropic Official Guide** — [[Project Context Files]] from Anthropic's documentation.
+- **Anthropic Official Guide** — [Project Context Files](Project-Context-Files.md) from Anthropic's documentation.
 
 ### From Production
 
@@ -568,7 +568,7 @@ That's it. A working context file in 30 minutes. Add to it as you learn.
 ## Sources
 
 - Boris Cherny (Head of Claude Code, Anthropic) — CLAUDE.md workflow, "living error log" pattern.
-- Anthropic, [[Project Context Files]] (official guide).
+- Anthropic, [Project Context Files](Project-Context-Files.md) (official guide).
 - HumanLayer, "Writing a good CLAUDE.md" (2025).
 - Cursor, official Cursor Rules documentation.
 - AGENTS.md specification (open standard).

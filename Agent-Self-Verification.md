@@ -1,7 +1,7 @@
 # Agent Self-Verification
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Context Engineering]] · [[Integration Contracts]] · [[Testing Strategy]] · [[Externalized State]] · [[Project Context Files]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Testing Strategy](Testing-Strategy.md) · [Externalized State](Externalized-State.md) · [Project Context Files](Project-Context-Files.md)
 
 ---
 
@@ -62,7 +62,7 @@ Planning is where most agent errors occur — invalid file references, misunders
 
 **Verify schema matches.** If the plan assumes a database table has a `user_id` column, the agent should read the migration file or schema definition to confirm.
 
-**Verify Integration Contract completeness.** The [[Integration Contracts]] pattern requires a section describing how new code connects to existing code. The agent should verify that each connection listed in the Integration Contract actually exists in the codebase.
+**Verify Integration Contract completeness.** The [Integration Contracts](Integration-Contracts.md) pattern requires a section describing how new code connects to existing code. The agent should verify that each connection listed in the Integration Contract actually exists in the codebase.
 
 **Technique:** Build a pre-flight check tool that validates the plan before implementation starts (Step 7 in the Development Loop). The check should be deterministic — no LLM reasoning, just binary pass/fail tests:
 
@@ -87,7 +87,7 @@ This is where self-verification has the highest impact. As the agent writes code
 
 **Run component tests.** For UI code, the agent should write tests that confirm the component renders correctly and responds to user interaction as expected.
 
-**Technique:** In your [[Project Context Files|CLAUDE.md or Cursor Rules]], include a section titled "Self-Verification Gates" that lists the exact commands to run after each implementation task:
+**Technique:** In your [CLAUDE.md or Cursor Rules](Project-Context-Files.md), include a section titled "Self-Verification Gates" that lists the exact commands to run after each implementation task:
 
 ```markdown
 ## Self-Verification Gates

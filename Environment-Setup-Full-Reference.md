@@ -827,6 +827,6 @@ This environment amplifies AI reasoning and makes AI-assisted development reliab
 ---
 
 **Next Steps:**
-- Read [[Development Loop — Full Reference]] for the step-by-step process
-- Read [[Integration Contracts]] for how to prevent orphaned code
-- Read [[Parallel Agent Workflows]] for advanced orchestration patterns
+- Read [Development Loop — Full Reference](Development-Loop-Full-Reference.md) for the step-by-step process
+- Read [Integration Contracts](Integration-Contracts.md) for how to prevent orphaned code
+- Read [Parallel Agent Workflows](Parallel-Agent-Workflows.md) for advanced orchestration patterns

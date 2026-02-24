@@ -1,7 +1,7 @@
 # Review and Audit
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Model Routing]] · [[Validation Passes]] · [[Integration Contracts]] · [[Deterministic Sandwich]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Model Routing](Model-Routing.md) · [Validation Passes](Validation-Passes.md) · [Integration Contracts](Integration-Contracts.md) · [Deterministic Sandwich](Deterministic-Sandwich.md)
 
 ---
 

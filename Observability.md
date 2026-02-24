@@ -1,13 +1,13 @@
 # Observability in AI-Assisted Development
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Externalized State]] · [[Agent Self-Verification]] · [[Canonical Documentation]] · [[Project Context Files]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Externalized State](Externalized-State.md) · [Agent Self-Verification](Agent-Self-Verification.md) · [Canonical Documentation](Canonical-Documentation.md) · [Project Context Files](Project-Context-Files.md)
 
 ---
 
 ## Why Observability Is Non-Negotiable
 
-This is [[AI-Coding-Best-Practices#13. Observability Is Not Optional|Principle 13]] of the parent guide. If you can't see what the AI did and why, you can't debug failures, learn from mistakes, or improve your process.
+This is [Principle 13](AI-Coding-Best-Practices.md#13-observability-is-not-optional) of the parent guide. If you can't see what the AI did and why, you can't debug failures, learn from mistakes, or improve your process.
 
 Observability isn't instrumentation — it's visibility into intent vs. outcome at every step. In traditional software development, observability is optional because you wrote the code yourself and know what it should do. In AI-assisted development, the AI made decisions you didn't write. Understanding those decisions — and whether they matched what you asked for — is the only way to spot systematic issues before they compound into bugs.
 

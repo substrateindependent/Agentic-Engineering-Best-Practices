@@ -1,7 +1,7 @@
 # Validation Passes
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Agent Self-Verification]] · [[Context Engineering]] · [[Integration Contracts]] · [[Review and Audit]] · [[Development Loop — Full Reference]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Agent Self-Verification](Agent-Self-Verification.md) · [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Review and Audit](Review-and-Audit.md) · [Development Loop — Full Reference](Development-Loop-Full-Reference.md)
 
 ---
 
@@ -17,7 +17,7 @@ A validation pass inverts the dynamic: instead of the drafter proving their work
 
 ## Why Fresh Context Matters
 
-This is [[AI-Coding-Best-Practices#4. Never Let the Author Validate Their Own Work|Principle 4]] of the parent guide.
+This is [Principle 4](AI-Coding-Best-Practices.md#4-never-let-the-author-validate-their-own-work) of the parent guide.
 
 When an AI agent drafts a feature plan, it accumulates reasoning: why certain architectural choices were made, what constraints were considered, what alternatives were rejected. This reasoning lives in the context window. When asked "does this plan work?", the agent can't fully step back — it inherits all that prior context, which acts as a lens through the entire validation.
 
@@ -48,7 +48,7 @@ Requirements fidelity validation asks whether the drafted plan covers everything
 
 **Who should run this pass:** Anyone who understands the original specification — ideally the person who wrote it, or a fresh agent with the spec in context. This pass is less about technical judgment and more about intent alignment.
 
-**When in the Development Loop:** Step 3 (Validate Requirements). See [[AI-Coding-Best-Practices#Phase 1: Plan|the Development Loop]].
+**When in the Development Loop:** Step 3 (Validate Requirements). See [the Development Loop](AI-Coding-Best-Practices.md#phase-1-plan).
 
 ### Architectural Coherence
 
@@ -58,14 +58,14 @@ Architectural coherence validation asks whether the plan respects existing archi
 
 **What to check:**
 - Pattern alignment: Does the plan follow the architectural patterns established in the codebase?
-- Integration points: Are all connections to existing code explicitly specified? (This is the [[Integration Contracts]] pattern.)
+- Integration points: Are all connections to existing code explicitly specified? (This is the [Integration Contracts](Integration-Contracts.md) pattern.)
 - No orphaned code: Will the new code be connected to the rest of the system, not abandoned as dead code?
 - Dependency direction: Does the new code depend on existing code, not the reverse?
 - Design consistency: Does the plan introduce new design patterns that contradict established ones?
 
 **Who should run this pass:** A senior engineer familiar with the existing codebase, or a fresh agent loaded with architectural context and existing patterns. This pass requires deep knowledge of how the system works.
 
-**When in the Development Loop:** Step 4 (Validate Integration). See [[AI-Coding-Best-Practices#Phase 1: Plan|the Development Loop]].
+**When in the Development Loop:** Step 4 (Validate Integration). See [the Development Loop](AI-Coding-Best-Practices.md#phase-1-plan).
 
 ---
 
@@ -207,13 +207,13 @@ Example: for a payment system feature, the critical decision is "how do we handl
 
 **Results:** This targeted approach outperformed generic judging by ~9 points in controlled tests. The reason: focused attention, no noise, shorter context window (lower cost).
 
-**How to apply:** In your evaluation criteria, mark which criteria are decision-critical and which are polish. Give the judge instructions: "Audit these three dimensions thoroughly. Skim the rest." This is an explicit application of the [[Context Engineering]] principle: focus attention on what matters.
+**How to apply:** In your evaluation criteria, mark which criteria are decision-critical and which are polish. Give the judge instructions: "Audit these three dimensions thoroughly. Skim the rest." This is an explicit application of the [Context Engineering](Context-Engineering.md) principle: focus attention on what matters.
 
 ---
 
 ## When to Use Validation Passes in the Development Loop
 
-From the parent guide's [[AI-Coding-Best-Practices#The Development Loop|Development Loop]]:
+From the parent guide's [Development Loop](AI-Coding-Best-Practices.md#the-development-loop):
 
 - **Step 3: Validate Requirements** — Requirements fidelity pass, fresh context.
 - **Step 4: Validate Integration** — Architectural coherence pass, fresh context.

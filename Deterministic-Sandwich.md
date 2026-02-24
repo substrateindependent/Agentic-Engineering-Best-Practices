@@ -1,7 +1,7 @@
 # Deterministic Sandwich
 
-**Parent:** [[AI-Coding-Best-Practices#10. The Deterministic Sandwich|AI-Coding Best Practices]]
-**Related:** [[Agent Self-Verification]] · [[Context Engineering]] · [[Integration Contracts]] · [[Externalized State]]
+**Parent:** [AI-Coding Best Practices](AI-Coding-Best-Practices.md#10-the-deterministic-sandwich)
+**Related:** [Agent Self-Verification](Agent-Self-Verification.md) · [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Externalized State](Externalized-State.md)
 
 ---
 
@@ -11,7 +11,7 @@ The Deterministic Sandwich is the foundational architecture for any AI-assisted 
 
 Input validation, file path resolution, dependency checking, environment verification, code formatting, type-checking, and output validation do not benefit from LLM flexibility — and they actively suffer from LLM non-determinism. The pattern isolates these hard-boundary checks into deterministic code, letting the LLM focus exclusively on genuinely ambiguous decisions: architectural choices, implementation strategy, code generation, and natural-language interpretation.
 
-The Deterministic Sandwich is the practical foundation of [[AI-Coding-Best-Practices#7. The Integration Contract|the Integration Contract]] principle and a concrete implementation of [[Context Engineering]]. It reduces the surface area for LLM unpredictability while preserving reasoning capability where it matters most.
+The Deterministic Sandwich is the practical foundation of [the Integration Contract](AI-Coding-Best-Practices.md#7-the-integration-contract) principle and a concrete implementation of [Context Engineering](Context-Engineering.md). It reduces the surface area for LLM unpredictability while preserving reasoning capability where it matters most.
 
 ---
 

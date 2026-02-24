@@ -954,4 +954,4 @@ If a session fails at task 7 of 12 in Step 8:
 
 ---
 
-This completes the **Development Loop — Full Reference**. Use this document as your authoritative guide for understanding what happens at each step, why the model assignments work, and how to recover from failures. For questions about core principles, see [[AI-Coding-Best-Practices.md]]. For implementation guidance, see [[Environment Setup — Full Reference]].
+This completes the **Development Loop — Full Reference**. Use this document as your authoritative guide for understanding what happens at each step, why the model assignments work, and how to recover from failures. For questions about core principles, see [AI-Coding-Best-Practices.md](AI-Coding-Best-Practices.md). For implementation guidance, see [Environment Setup — Full Reference](Environment-Setup-Full-Reference.md).

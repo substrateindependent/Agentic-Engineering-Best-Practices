@@ -1,7 +1,7 @@
 # Model Routing
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Validation Passes]] · [[Development Loop — Full Reference]] · [[Context Engineering]] · [[Deterministic Sandwich]] · [[Review and Audit]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Validation Passes](Validation-Passes.md) · [Development Loop — Full Reference](Development-Loop-Full-Reference.md) · [Context Engineering](Context-Engineering.md) · [Deterministic Sandwich](Deterministic-Sandwich.md) · [Review and Audit](Review-and-Audit.md)
 
 ---
 

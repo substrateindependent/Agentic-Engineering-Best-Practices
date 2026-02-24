@@ -1,7 +1,7 @@
 # Integration Contracts
 
-**Parent:** [[AI-Coding-Best-Practices]]
-**Related:** [[Canonical Documentation]] · [[Externalized State]] · [[Review and Audit]] · [[Agent Self-Verification]]
+**Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
+**Related:** [Canonical Documentation](Canonical-Documentation.md) · [Externalized State](Externalized-State.md) · [Review and Audit](Review-and-Audit.md) · [Agent Self-Verification](Agent-Self-Verification.md)
 
 ---
 
@@ -16,7 +16,7 @@ An Integration Contract is a **mandatory section in every feature plan** that ex
 - How new components integrate with existing navigation and state
 - What code depends on this feature, and what this feature depends on
 
-The Integration Contract is not aspirational. It's not "we'll connect it if we have time." It's the executable specification for integration — the section that gets verified as part of the deep audit in Step 10 of the [[AI-Coding-Best-Practices#The Development Loop|Development Loop]].
+The Integration Contract is not aspirational. It's not "we'll connect it if we have time." It's the executable specification for integration — the section that gets verified as part of the deep audit in Step 10 of the [Development Loop](AI-Coding-Best-Practices.md#the-development-loop).
 
 ---
 
