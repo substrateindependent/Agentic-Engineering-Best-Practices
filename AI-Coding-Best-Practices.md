@@ -125,7 +125,7 @@ The loop runs once per feature (or "epic" — a self-contained unit of functiona
 | **3. Validate Requirements** | In a fresh context, verify the plan satisfies the spec — both completeness and intent. | Frontier (fresh context) | Validated or sent back for revision |
 | **4. Validate Integration** | In a fresh context, verify the plan integrates with the existing codebase — architecture, prior features, design system. | Frontier (fresh context) | Validated or sent back for revision |
 | **5. Generate Build Plan** | Translate the validated plan into an ordered task list with file targets, acceptance criteria per task, and dependencies. | Mid-tier | Dual-format build plan (readable + structured) |
-| **6. Double-Check the Build Plan** | Verify completeness, intent alignment, and internal consistency (dependencies, file references, task ordering). | Frontier | Validated or sent back for revision |
+| **6. Double-Check the Build Plan** | In a fresh context, verify completeness, intent alignment, and internal consistency (dependencies, file references, task ordering). | Frontier | Validated or sent back for revision |
 ### Phase 2: Build
 | Step | What You Do | Model Tier | Key Output |
 |------|-------------|------------|------------|
@@ -137,7 +137,7 @@ The loop runs once per feature (or "epic" — a self-contained unit of functiona
 ### Phase 3: Verify & Ship
 | Step | What You Do | Model Tier | Key Output |
 |------|-------------|------------|------------|
-| **12. Full E2E Test Suite** | Run the *entire* test suite — not just tests for the new feature. Catch regressions. | Mid-tier | Test results + issue report |
+| **12. Full E2E Test Suite** | Run the *entire* test suite — not just tests for the new feature. Catch regressions. Also run an E2E browser test of the entire user flow using the app with real-world use cases. | Mid-tier | Test results + issue report |
 | **13. Final Remediation** | Fix any E2E failures. Re-run the full suite to confirm no new regressions. | Mid-tier | All tests passing |
 | **14. Commit + Update Docs** | Final commit. Merge to your main branch. **Update canonical documentation** for what was built. | Automated + Mid-tier | Merged code, updated docs |
 | **15. Smoke Test** | Post-merge verification: does the app start? Do all tests still pass? Is the environment healthy? | Automated (no LLM) | Pass/fail gate |
