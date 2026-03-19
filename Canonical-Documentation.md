@@ -1,7 +1,7 @@
 # Canonical Documentation
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Context Engineering](Context-Engineering.md) · [Externalized State](Externalized-State.md) · [Integration Contracts](Integration-Contracts.md) · [Project Context Files](Project-Context-Files.md)
+**Related:** [Context Engineering](Context-Engineering.md) · [Externalized State](Externalized-State.md) · [Integration Contracts](Integration-Contracts.md) · [Agentic Workflow Guide](agentic-workflow-guide.md)
 
 ---
 
@@ -129,6 +129,12 @@ What other features does this interact with? Cross-link to their canonical docs.
 ```
 
 Not every section is mandatory for every feature. A simple CRUD endpoint might skip "Known Issues." A data pipeline might skip "API Contracts." Use your judgment — the goal is to capture what the next person (or the AI in the next research phase) actually needs to understand.
+
+---
+
+## Keeping Documentation Current with the Agentic Workflow
+
+The agentic workflow guide includes the `/capture-lesson` subagent, which runs after each implementation and captures surprises, mistakes, and insights. These lessons can include suggestions for updating canonical documentation — either to fix stale content or to add details that would help future features. This mechanism ensures that canonical documentation stays current as the codebase evolves, preventing the drift that turns docs into liabilities.
 
 ---
 

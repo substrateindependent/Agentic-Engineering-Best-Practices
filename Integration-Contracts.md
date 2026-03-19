@@ -1,7 +1,7 @@
 # Integration Contracts
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Canonical Documentation](Canonical-Documentation.md) · [Externalized State](Externalized-State.md) · [Review and Audit](Review-and-Audit.md) · [Agent Self-Verification](Agent-Self-Verification.md)
+**Related:** [Canonical Documentation](Canonical-Documentation.md) · [Externalized State](Externalized-State.md) · [Verification and Review](Verification-and-Review.md) · [Agentic Workflow Guide](agentic-workflow-guide.md)
 
 ---
 
@@ -228,6 +228,12 @@ During the deep audit (Step 10), verify every point in the Integration Contract:
 - [ ] Have downstream systems been notified of changes they depend on?
 - [ ] If new tables are added, do downstream readers have appropriate migrations?
 - [ ] Are there any circular dependencies (A depends on B, B depends on A)?
+
+---
+
+## Integration Contracts in the Agentic Workflow
+
+The agentic workflow guide's plan file format includes Integration Contract-like sections for each piece. The `/implement` and `/project` subagents use these sections — "Files:", "Done when:" — to verify that implementation matches the specified integration requirements. This direct integration of contracts into plan files ensures verification happens systematically during implementation, not as an afterthought.
 
 ---
 

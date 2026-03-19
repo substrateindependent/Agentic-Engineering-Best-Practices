@@ -1,20 +1,24 @@
 # AI-Assisted Coding: Best Practices Guide
 **Author:** Glenn Clayton, Fieldcrest Ventures
-**Version:** 2.0 — February 2026
+**Version:** 3.0 — March 2026
 ---
 ## Why This Guide Exists
 In February 2026, Andrej Karpathy marked the one-year anniversary of the term "vibe coding" — and declared it passé. The approach that replaced it doesn't have a catchy name yet, but the pattern is clear: AI does the implementation, the human owns architecture, quality, and correctness. Addy Osmani calls it "agentic engineering." Boris Cherny's Claude Code team simply calls it "how we work."
+
 The shift matters because the alternative — shipping AI-generated code without disciplined verification — is producing what the community has started calling the "slopacolypse": a flood of plausible-looking but subtly broken code across GitHub. Qodo's 2025 research found that AI-generated PRs are 18% larger, incidents per PR are up 24%, and change failure rates are up 30%. The irony is that AI-assisted development rewards strong engineering discipline *more* than traditional coding, not less.
 
-This guide is the discipline. It codifies a methodology that independently converges on the same patterns that the best agentic coding practitioners have arrived at — then goes further, with a structured development loop, environment setup guide, and a set of linked deep dives for each major concept.
+This guide codifies a methodology that has been battle-tested through production projects like Pepper V2, independently converges on the same patterns that the best agentic coding practitioners have arrived at, and goes further with a structured development loop, environment setup guide, and linked deep dives for each major concept. It represents both research validation and real-world experience.
 
 ## How to Use This Guide
 This is a **Map of Content** — a concise reference to the principles, processes, and environment setup that make AI-assisted coding reliable and repeatable. Each section links to a deeper dive where the concept is explored in full.
+
 The guide is organized in three layers:
 1. **Core Principles** — The philosophy. Why certain patterns work and others fail.
-2. **The Development Loop** — The step-by-step process for building features with AI.
+2. **The Agentic Workflow** — The step-by-step process for building features with AI.
 3. **Environment Setup** — How to configure your repo, tools, and context so the AI can do its best work.
-If you're already doing AI-assisted coding and want to level up, start with the [Core Principles](#core-principles) and see which ones you're missing. If you're onboarding to a collaborative project, read [The Development Loop](#the-development-loop) to understand the workflow. If you're setting up a new project, start with [Environment Setup](#environment-setup).
+
+If you're already doing AI-assisted coding and want to level up, start with the [Core Principles](#core-principles) and see which ones you're missing. If you're onboarding to a collaborative project, read [The Agentic Workflow](#the-agentic-workflow) to understand the workflow. If you're setting up a new project, start with [Environment Setup](#environment-setup).
+
 ---
 ## Core Principles
 These five principles underpin everything else in the guide. They're listed roughly in order of impact — the first few will improve your results immediately; the later ones compound over time.
@@ -40,7 +44,7 @@ Canonical documentation is not a one-time artifact. After each feature is comple
 
 Every task you give the AI should include both the work to do *and* a way to confirm it was done correctly. Tests to run, linting to check, a build to trigger, assertions to validate — any feedback loop that lets the agent self-correct before you review.
 
-Boris Cherny (creator of Claude Code) calls this "probably the most important thing to get great results" — and his data backs it up: giving the agent a verification loop 2–3x the quality of final output. The reason is simple: without a feedback loop, the agent declares "done" based on its own assessment. With a feedback loop, it declares "done" based on *evidence*.
+Boris Cherny (creator of Claude Code) calls this "probably the most important thing to get great results" — and his data backs it up: giving the agent a verification loop improves 2–3x the quality of final output. The reason is simple: without a feedback loop, the agent declares "done" based on its own assessment. With a feedback loop, it declares "done" based on *evidence*.
 
 This applies beyond testing. During plan generation, give the agent access to the existing codebase so it can verify file references. During research, give it access to the actual API docs rather than relying on training data. During implementation, ensure it can run the code it writes. The principle is universal: the agent should never have to guess whether its output is correct when it could *check*.
 
@@ -54,9 +58,7 @@ Code review and code audit catch fundamentally different problems and should be 
 
 Finally, testing during implementation (unit tests, component tests) verifies that new code works correctly on its own. Testing after integration (full E2E suite) verifies that new code works correctly *within the full application* — catching regressions where new code breaks previously-working functionality. These are different test phases that catch different failure modes. Run both, and run the full E2E suite — not just tests for the new feature. The most common bugs that survive unit testing are integration bugs.
 
-> *See: [Agent Self-Verification](Agent-Self-Verification.md) for patterns and examples across all development phases.*
-> *See: [Validation Passes](Validation-Passes.md) for how to structure multi-pass validation, including the LLM-as-Judge pattern.*
-> *See: [Review and Audit](Review-and-Audit.md) for prompt templates and checklists for each pass.*
+> *See: [Verification and Review](Verification-and-Review.md) for patterns, templates, and checklists across all development phases.*
 > *See: [Testing Strategy](Testing-Strategy.md) for the three-tier testing pyramid in AI-assisted development.*
 
 **Sources:** Boris Cherny, Claude Code workflow (2026); Addy Osmani, "Agentic Engineering" (2026).
@@ -113,54 +115,43 @@ AI coding tools are force multipliers, not replacements for engineering judgment
 **Sources:** Boris Cherny, Claude Code workflow (2026); Addy Osmani, "Agentic Engineering" (2026); Andrej Karpathy, "Vibe coding is passé" (2026).
 
 ---
-## The Development Loop
-This is the step-by-step process for building a feature with AI assistance. It's derived from a 15-step pipeline validated against industry research, simplified here into a practitioner-friendly loop.
-The loop runs once per feature (or "epic" — a self-contained unit of functionality). For a full project, you run this loop multiple times, grouping features into milestones for review.
-> *See: [Development Loop — Full Reference](Development-Loop-Full-Reference.md) for the complete 15-step pipeline with model assignments and failure recovery.*
-### Phase 1: Plan
-| Step | What You Do | Model Tier | Key Output |
-|------|-------------|------------|------------|
-| **1. Research** | Investigate the implementation strategy. Stress-test against edge cases. Produce a canonical document. | Frontier | Canonical document |
-| **2. Draft the Feature Plan** | Decompose the canonical doc into a buildable plan with acceptance criteria and an Integration Contract. | Frontier | Feature plan with Integration Contract |
-| **3. Validate Requirements** | In a fresh context, verify the plan satisfies the spec — both completeness and intent. | Frontier (fresh context) | Validated or sent back for revision |
-| **4. Validate Integration** | In a fresh context, verify the plan integrates with the existing codebase — architecture, prior features, design system. | Frontier (fresh context) | Validated or sent back for revision |
-| **5. Generate Build Plan** | Translate the validated plan into an ordered task list with file targets, acceptance criteria per task, and dependencies. | Mid-tier | Dual-format build plan (readable + structured) |
-| **6. Double-Check the Build Plan** | In a fresh context, verify completeness, intent alignment, and internal consistency (dependencies, file references, task ordering). | Frontier | Validated or sent back for revision |
-### Phase 2: Build
-| Step | What You Do | Model Tier | Key Output |
-|------|-------------|------------|------------|
-| **7. Pre-Flight Check** | Programmatically verify: do referenced files exist? Are dependencies installed? Is the schema what we expect? | Automated (no LLM) | Pass/fail gate |
-| **8. Implement** | Work through the build plan task by task. Write code + unit tests + component tests. Git commit after each task. | Mid-tier | Working code with tests, checkpointed |
-| **9. Code Review** | Surface-level quality check: style, bugs, anti-patterns, type safety, error handling. | Mid-tier | Issue report |
-| **10. Deep Audit** | System-level correctness: cross-file integration, async bugs, security, performance. **Must include Integration Contract verification.** | Frontier | Issue report with Integration Contract section |
-| **11. Remediation** | Fix issues from code review and audit, in severity order. Re-run unit tests after each fix. | Mid-tier | Clean code |
-### Phase 3: Verify & Ship
-| Step | What You Do | Model Tier | Key Output |
-|------|-------------|------------|------------|
-| **12. Full E2E Test Suite** | Run the *entire* test suite — not just tests for the new feature. Catch regressions. Also run an E2E browser test of the entire user flow using the app with real-world use cases. | Mid-tier | Test results + issue report |
-| **13. Final Remediation** | Fix any E2E failures. Re-run the full suite to confirm no new regressions. | Mid-tier | All tests passing |
-| **14. Commit + Update Docs** | Final commit. Merge to your main branch. **Update canonical documentation** for what was built. | Automated + Mid-tier | Merged code, updated docs |
-| **15. Smoke Test** | Post-merge verification: does the app start? Do all tests still pass? Is the environment healthy? | Automated (no LLM) | Pass/fail gate |
-### Key Patterns in the Loop
-**Six steps use frontier models, six use mid-tier, three use no model at all.** The frontier model handles research, validation, and audit — high-stakes reasoning where errors cascade. The mid-tier model handles planning, implementation, review, and remediation — pattern-following execution. Automated steps handle binary checks at zero LLM cost.
-**Three validation gates use fresh context.** Steps 3, 4, and 6 each start with a clean slate to prevent confirmation bias from the drafting steps.
-**Two automated gates bookend the build phase.** Pre-flight (Step 7) catches false assumptions before you start coding. Smoke test (Step 15) catches merge-level issues after you finish.
-**Checkpoints throughout.** Every completed task in Step 8 gets a git commit. If a session fails, you resume from the last checkpoint.
+## The Agentic Workflow
+The agentic workflow is the canonical process for building features with AI assistance: **Diagnose → Plan → Implement**. It's the core orchestration loop that runs once per feature (or "epic" — a self-contained unit of functionality). For a full project, you run this loop multiple times, grouping features into milestones for review. For multi-phase projects, use the `/project` meta-orchestrator to manage multiple loops through research, planning, and implementation phases.
+
+> *See: [Agentic Workflow Guide](agentic-workflow-guide.md) for the complete workflow reference, slash commands, role definitions, and failure recovery.*
+
+### Phase 1: Diagnose
+Start with read-only analysis. Review the specification, stress-test edge cases, and map integration points. This phase produces a structured diagnosis document that becomes the input to planning. The diagnosis answers: What are we building? Why? What might go wrong? What does it connect to?
+
+### Phase 2: Plan
+Take the diagnosis and produce a detailed plan: decomposed tasks with acceptance criteria, an Integration Contract specifying how new code connects to existing code, file targets, dependencies between tasks, and explicit acceptance criteria for the feature as a whole. This phase includes validation gates that use fresh context to catch planning errors before implementation begins.
+
+### Phase 3: Implement
+Execute the plan task by task. Each task includes code, tests, and a git checkpoint. Use verification loops (linting, testing, type-checking) after each task. When all tasks are complete, run a full integration audit and E2E test suite, remediate any issues, and merge. Finally, update canonical documentation to reflect what was actually built.
+
+Within each phase, you'll find slash commands (like `/code`, `/verify`, `/visual-check`) that orchestrate subagents. The workflow guide describes each command's inputs, expected outputs, and when to use it.
+
 ---
 ## Environment Setup
-How you configure your repo, tools, and context artifacts determines the ceiling for AI-assisted coding quality. This section covers the setup that makes the Development Loop work well.
-> *See: [Environment Setup — Full Reference](Environment-Setup-Full-Reference.md) for detailed configuration guides.*
+How you configure your repo, tools, and context artifacts determines the ceiling for AI-assisted coding quality. This section covers the setup that makes the agentic workflow work well.
+
+> *See: [Environment and Repository Setup](Environment-and-Repo-Setup.md) for detailed configuration guides.*
+
 ### Project Context Files
 Modern AI coding tools support project-level instruction files that persist across sessions. These are your highest-leverage setup investment:
 - **Cursor Rules** (`.cursor/rules/`) — Project-specific conventions, tech stack details, coding patterns, and anti-patterns. Loaded automatically for every AI interaction in Cursor.
 - **CLAUDE.md** — Equivalent for Claude Code. Project context, architectural decisions, and coding standards.
 - **AGENTS.md** — The emerging open standard. Repository-level instructions for any AI agent working on the codebase.
+
 These files should include: your tech stack and key dependencies, architectural patterns you follow (and anti-patterns to avoid), naming conventions and file organization, testing requirements and patterns, and any project-specific constraints.
+
 **Treat these files as living error logs, not static configuration.** Boris Cherny's team at Anthropic maintains their CLAUDE.md as a shared mistake journal: "Anytime we see Claude do something incorrectly we add it to the CLAUDE.md, so Claude knows not to do it next time." Team members tag each other's PRs to surface learnings. Over time, this builds project-specific institutional memory that meaningfully reduces repeat errors. The Anthropic team recommends keeping these files concise — under 500 lines — and using per-folder context files for topic-specific instructions rather than stuffing everything into the root file.
-> *See: [Project Context Files](Project-Context-Files.md) for templates, examples, and the "living error log" pattern.*
+
 ### Canonical Documentation Index
-Maintain an index of canonical documents — one per major feature or functional area. Each document describes: what was built, how it works, what data it touches, and what interfaces it exposes. The index lives in the repo and updates after every feature completion (Step 14 of the Development Loop).
-When a new feature needs to integrate with existing functionality, the research phase (Step 1) reads the relevant canonical docs. This is how the AI gets accurate context about your codebase without needing to parse every file.
+Maintain an index of canonical documents — one per major feature or functional area. Each document describes: what was built, how it works, what data it touches, and what interfaces it exposes. The index lives in the repo and updates after every feature completion.
+
+When a new feature needs to integrate with existing functionality, the research phase (diagnose stage) reads the relevant canonical docs. This is how the AI gets accurate context about your codebase without needing to parse every file.
+
 A simple structure works:
 ```
 docs/
@@ -171,19 +162,26 @@ docs/
     payments.md            # Stripe integration, data flow
     ...
 ```
+
 > *See: [Canonical Documentation](Canonical-Documentation.md) for the canonical document template.*
-### Build Plans in the Repo
-Commit your build plans (the markdown version from Step 5) to the repo. They serve as an audit trail and debugging artifact — when something goes wrong, you can trace back to what was planned vs. what was implemented.
+
+### Plan Files in the Repo
+Commit your plan files (the markdown version) to the repo. They serve as an audit trail and debugging artifact — when something goes wrong, you can trace back to what was planned vs. what was implemented.
+
 A suggested structure:
 ```
 docs/
-  build-plans/
+  plans/
     001-authentication.md      # [ ] / [x] task checkboxes
     002-booking-system.md
     ...
+    archive/                   # Completed plans
 ```
+
 The checkbox format (`[ ]` / `[x]`) gives you at-a-glance progress tracking and a clear record of what was completed in what order.
+
 > *See: [Externalized State](Externalized-State.md) for the dual-format build plan approach.*
+
 ### Integration Contract Template
 Include an Integration Contract section in every feature plan. At minimum, the contract should specify:
 - **Files modified:** Which existing files will be changed, and how.
@@ -192,53 +190,65 @@ Include an Integration Contract section in every feature plan. At minimum, the c
 - **Data model changes:** New tables, modified schemas, migration requirements.
 - **Component interfaces:** How new UI components connect to existing navigation, layouts, and state.
 - **Dependencies:** What existing code this feature depends on. What will depend on this feature.
+
 > *See: [Integration Contracts](Integration-Contracts.md) for the full template and verification checklist.*
+
 ### Git Workflow for AI-Assisted Development
 AI coding benefits from a more granular commit strategy than typical development:
-- **One commit per task** during implementation (Step 8) — not one commit per feature. This is your checkpoint system.
+- **One commit per task** during implementation — not one commit per feature. This is your checkpoint system.
 - **Descriptive commit messages** that include what was implemented, what was tested, and any decisions made. The AI can generate these.
-- **Feature branches per epic/feature** — keep the main branch clean and merge only after the full loop completes (Step 14).
+- **Feature branches per epic/feature** — keep the main branch clean and merge only after the full workflow completes.
+
 This granularity costs nothing but gives you failure recovery, a clear audit trail, and the ability to bisect issues precisely.
+
 ### Parallel Agent Sessions
 The single biggest throughput multiplier in AI-assisted development isn't a better prompt or a faster model — it's running multiple agent sessions concurrently on independent features.
+
 Boris Cherny runs 5 Claude sessions in parallel in his terminal, each in its own git worktree, plus 5–10 sessions on claude.ai. His team calls this "the single biggest productivity unlock." Addy Osmani experiments with the same "orchestrator" pattern — assigning backend, frontend, and tests to separate agents simultaneously.
+
 The guard rails that make this work:
 - **One git worktree per session.** Each agent works on its own branch in its own working directory. No merge conflicts during implementation.
 - **Independent features only.** Don't parallelize features that depend on each other — the Integration Contracts will conflict.
 - **A notification system.** You need to know when each agent needs input. Terminal notifications, browser tabs, or a dashboard — whatever keeps you from blocking an idle agent.
-- **Merge discipline.** When features complete, merge them one at a time through the full verify-and-ship process (Steps 12–15). Don't batch-merge — that defeats the purpose of per-feature verification.
+- **Merge discipline.** When features complete, merge them one at a time through the full workflow. Don't batch-merge — that defeats the purpose of per-feature verification.
+
 This isn't about multitasking. It's about eliminating idle time — while one agent runs tests, another implements, and a third waits for your review. Your job as orchestrator is to keep all sessions unblocked.
+
 > *See: [Parallel Agent Workflows](Parallel-Agent-Workflows.md) for worktree setup, notification patterns, and merge strategies.*
+
 ### Tool Hooks and Automation
 Use pre- and post-action hooks to handle deterministic cleanup automatically, rather than relying on the AI to get it right every time:
 - **Post-edit formatting hooks** — Auto-run Prettier, ESLint, or your formatter after every AI edit. Catches the 10% of formatting issues the AI misses, preventing CI failures.
-- **Pre-commit hooks** — Run linting, type-checking, and fast tests before any commit. The agent's checkpoint commits (Step 8) go through the same quality gate as human commits.
+- **Pre-commit hooks** — Run linting, type-checking, and fast tests before any commit. The agent's checkpoint commits go through the same quality gate as human commits.
 - **Custom slash commands** — Build reusable workflows for common operations. Cherny uses a `/commit-push-pr` command "dozens of times daily" that handles the full commit-push-create-PR flow in one keystroke.
+
 These hooks are instances of the [Deterministic Sandwich](Deterministic-Sandwich.md) principle applied at the tool level. They reduce the surface area for AI inconsistency without adding cognitive overhead to your workflow.
-> *See: [Environment Setup — Full Reference](Environment-Setup-Full-Reference.md) for hook configuration examples.*
+
+> *See: [Environment and Repository Setup](Environment-and-Repo-Setup.md) for hook configuration examples.*
+
 ---
 ## Linked Deep Dives
 The following pages expand on concepts referenced throughout this guide. Each can stand alone but links back here and to related pages.
+
 | Page | Covers |
 |------|--------|
+| [Agentic Workflow Guide](agentic-workflow-guide.md) | The canonical workflow process: Diagnose → Plan → Implement. Slash commands, role definitions, and failure recovery. |
 | [Context Engineering](Context-Engineering.md) | Building and maintaining high-quality context artifacts. The "context > model" principle in practice. |
 | [Canonical Documentation](Canonical-Documentation.md) | Templates, examples, update practices, and index management for per-feature canonical docs. |
-| [Agent Self-Verification](Agent-Self-Verification.md) | Patterns for giving AI agents feedback loops across all development phases. |
-| [Validation Passes](Validation-Passes.md) | How to structure multi-pass validation with fresh context, including the LLM-as-Judge pattern. |
+| [Verification and Review](Verification-and-Review.md) | Patterns, templates, and checklists for multi-pass validation, code review, code audit, and the LLM-as-Judge pattern. |
 | [Model Routing](Model-Routing.md) | Framework for assigning frontier, mid-tier, and automated tiers to tasks. Includes when to use the "always frontier" strategy. |
 | [Integration Contracts](Integration-Contracts.md) | The Integration Contract template, verification checklist, and common orphaned-code failure patterns. |
 | [Externalized State](Externalized-State.md) | Dual-format build plans, checkpoint-per-task, and failure recovery patterns. |
 | [Deterministic Sandwich](Deterministic-Sandwich.md) | The deterministic → LLM → deterministic pattern with examples of pre/post-processing gates and tool hooks. |
-| [Review and Audit](Review-and-Audit.md) | Prompt templates and checklists for code review (surface-level) and audit (system-level). |
 | [Testing Strategy](Testing-Strategy.md) | The three-tier testing pyramid: unit tests, component tests, E2E tests. When to run each. |
 | [Parallel Agent Workflows](Parallel-Agent-Workflows.md) | Running multiple agent sessions concurrently. Worktree setup, notification patterns, and merge strategies. |
-| [Project Context Files](Project-Context-Files.md) | Templates for Cursor Rules, CLAUDE.md, AGENTS.md. The "living error log" pattern. |
-| [Development Loop — Full Reference](Development-Loop-Full-Reference.md) | The complete 15-step pipeline with model assignments, failure recovery paths, and state machine formalization. |
-| [Environment Setup — Full Reference](Environment-Setup-Full-Reference.md) | Detailed repo structure, hook configuration, and tool automation. |
+| [Environment and Repository Setup](Environment-and-Repo-Setup.md) | Detailed repo structure, hook configuration, tool automation, and canonical documentation index setup. |
 | [Observability](Observability.md) | Lightweight and production-grade approaches to logging and tracing AI-assisted development. |
+
 ---
 ## Sources
-This guide draws on original methodology developed by Glenn Clayton (Fieldcrest Ventures), validated against 2025–2026 industry research, and stress-tested against workflows published by leading AI coding practitioners.
+This guide draws on original methodology developed by Glenn Clayton (Fieldcrest Ventures), battle-tested through production projects like Pepper V2, validated against 2025–2026 industry research, and stress-tested against workflows published by leading AI coding practitioners.
+
 ### Research & Industry Reports
 - Thoughtworks, "Spec-driven development: Unpacking one of 2025's key new AI-assisted engineering practices"
 - Martin Fowler, "Context Engineering for Coding Agents" (2025)
@@ -253,6 +263,7 @@ This guide draws on original methodology developed by Glenn Clayton (Fieldcrest 
 - Playwright Official Documentation, "Best Practices"
 - Cursor, Claude Code, Devin, and Windsurf architecture documentation
 - AGENTS.md open standard specification
+
 ### Practitioner Workflows (2026)
 - Boris Cherny (Head of Claude Code, Anthropic) — Claude Code workflow threads, team tips, and Lenny's Newsletter interview
 - Addy Osmani (Google) — "Agentic Engineering," "The 80% Problem in Agentic Coding," "How to Write a Good Spec for AI Agents," "My LLM Coding Workflow Going into 2026"

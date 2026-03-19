@@ -1,7 +1,7 @@
 # Model Routing
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Validation Passes](Validation-Passes.md) · [Development Loop — Full Reference](Development-Loop-Full-Reference.md) · [Context Engineering](Context-Engineering.md) · [Deterministic Sandwich](Deterministic-Sandwich.md) · [Review and Audit](Review-and-Audit.md)
+**Related:** [Verification and Review](Verification-and-Review.md) · [Agentic Workflow Guide](agentic-workflow-guide.md) · [Context Engineering](Context-Engineering.md) · [Deterministic Sandwich](Deterministic-Sandwich.md)
 
 ---
 
@@ -105,6 +105,12 @@ The parent guide's Development Loop has 15 steps. Here's which tier handles each
 **Total for Phase 3:** ~$0.12–0.40 using automation and mid-tier.
 
 **Full feature (all 15 steps):** ~$2.50–6.15 using tiered routing vs. ~$4.50–9.00 if you use frontier for everything. **That's a 40–50% cost reduction.**
+
+---
+
+## Model Routing in the Agentic Workflow
+
+The agentic workflow guide uses a `model: opus` directive for subagents, representing Boris Cherny's "always frontier for subagents" strategy. This aligns with Cherny's argument that for focused, well-specified tasks (a subagent implementing one piece from a plan), frontier-model quality is worth the cost. The workflow pairs this with tiered routing at higher levels: orchestrators may route differently based on phase and task complexity, but subagents responsible for critical decisions consistently use frontier models to reduce rework.
 
 ---
 

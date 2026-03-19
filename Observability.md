@@ -1,7 +1,7 @@
 # Observability in AI-Assisted Development
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Externalized State](Externalized-State.md) · [Agent Self-Verification](Agent-Self-Verification.md) · [Canonical Documentation](Canonical-Documentation.md) · [Project Context Files](Project-Context-Files.md)
+**Related:** [Externalized State](Externalized-State.md) · [Verification and Review](Verification-and-Review.md) · [Canonical Documentation](Canonical-Documentation.md) · [Agentic Workflow Guide](agentic-workflow-guide.md)
 
 ---
 
@@ -186,6 +186,12 @@ Each span captures:
 - **LiteLLM** — Cross-provider logging and cost tracking. Sits between your code and the model API.
 
 For teams building custom AI pipelines, Braintrust and LangSmith are the industry standards. For teams using off-the-shelf tools (Cursor, Claude Code, Windsurf), look for built-in observability — Claude Code can export spans to external systems; Cursor integrates with Braintrust.
+
+---
+
+## Run Logs as Lightweight Observability
+
+The agentic workflow guide produces `.log.md` files after each run — markdown documents capturing what happened during a session: which steps were executed, what succeeded, what failed, and why. These run logs serve as a lightweight observability mechanism for development sessions. They're stored in the repo alongside plan files, making them auditable and queryable. For teams not yet ready for full OpenTelemetry instrumentation, run logs provide the essential observability signals: task completion, test results, and decision chains.
 
 ---
 

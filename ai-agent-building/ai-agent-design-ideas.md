@@ -72,4 +72,4 @@ This separation of concerns keeps spawning predictable and auditable while prese
 
 ## Related Notes
 
-- [[claude-code-ai-agent-building-best-practices]] — Curated best practices and ideas from bcherny on building AI agents using Claude Code
+- [Agent Architecture Best Practices](Agent-Best-Practices.md) — Comprehensive guide to agent architecture, infrastructure, and operations

@@ -1,7 +1,7 @@
 # Parallel Agent Workflows
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Externalized State](Externalized-State.md) · [Integration Contracts](Integration-Contracts.md) · [Development Loop — Full Reference](Development-Loop-Full-Reference.md) · [Project Context Files](Project-Context-Files.md)
+**Related:** [Externalized State](Externalized-State.md) · [Integration Contracts](Integration-Contracts.md) · [Agentic Workflow Guide](agentic-workflow-guide.md) · [Environment and Repository Setup](Environment-and-Repo-Setup.md)
 
 ---
 
@@ -48,7 +48,7 @@ The reality is closer to 3–4x throughput improvement than 5x, because agents n
 
 The research backing this comes from multiple sources: Boris Cherny's Claude Code workflow, Addy Osmani's experiments with backend/frontend/test agents, Cursor's "Parallel Agents" feature (built entirely on git worktrees), and internal Anthropic studies. The consistent finding: parallel independent work with disciplined merge practices produces dramatic throughput gains without quality loss.
 
-> *See: [Development Loop — Full Reference](Development-Loop-Full-Reference.md) for how merge discipline prevents quality degradation.*
+> *See: [Agentic Workflow Guide](agentic-workflow-guide.md) for how merge discipline and the Diagnose → Plan → Implement workflow prevent quality degradation.*
 
 ---
 
@@ -142,6 +142,12 @@ git worktree add ../my-project-logging feature/logging
 ```
 
 Worktrees are cheap, but disk still matters. On a 2GB codebase, 5 concurrent worktrees consume ~10GB of disk (plus workspace overhead). For long-running or high-concurrency setups, monitor disk usage and prune aggressively.
+
+---
+
+## Guardrails in the Agentic Workflow
+
+The agentic workflow guide includes explicit guardrails against concurrent `/implement` sessions on the same worktree — the workflow rules forbid this practice precisely to avoid the merge conflicts and contamination issues described in this guide. The `/project` meta-orchestrator provides an automated alternative to manual parallel orchestration: it sequences features through diagnose → plan → implement loops on separate worktrees, automating the isolation and merge discipline that manual parallel workflows require.
 
 ---
 

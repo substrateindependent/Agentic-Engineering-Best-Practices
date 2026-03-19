@@ -1,7 +1,7 @@
 # Deterministic Sandwich
 
 **Parent:** [AI-Coding Best Practices](AI-Coding-Best-Practices.md#10-the-deterministic-sandwich)
-**Related:** [Agent Self-Verification](Agent-Self-Verification.md) · [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Externalized State](Externalized-State.md)
+**Related:** [Verification and Review](Verification-and-Review.md) · [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Externalized State](Externalized-State.md)
 
 ---
 

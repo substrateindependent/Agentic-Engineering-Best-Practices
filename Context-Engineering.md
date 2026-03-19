@@ -1,7 +1,7 @@
 # Context Engineering
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Canonical Documentation](Canonical-Documentation.md) · [Project Context Files](Project-Context-Files.md) · [Agent Self-Verification](Agent-Self-Verification.md) · [Externalized State](Externalized-State.md) · [Model Routing](Model-Routing.md)
+**Related:** [Canonical Documentation](Canonical-Documentation.md) · [Environment and Repository Setup](Environment-and-Repo-Setup.md) · [Verification and Review](Verification-and-Review.md) · [Externalized State](Externalized-State.md) · [Model Routing](Model-Routing.md)
 
 ---
 

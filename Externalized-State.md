@@ -1,7 +1,7 @@
 # Externalized State
 
 **Parent:** [AI-Coding-Best-Practices](AI-Coding-Best-Practices.md)
-**Related:** [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Canonical Documentation](Canonical-Documentation.md) · [Deterministic Sandwich](Deterministic-Sandwich.md)
+**Related:** [Context Engineering](Context-Engineering.md) · [Integration Contracts](Integration-Contracts.md) · [Canonical Documentation](Canonical-Documentation.md) · [Deterministic Sandwich](Deterministic-Sandwich.md) · [Agentic Workflow Guide](agentic-workflow-guide.md)
 
 ---
 
@@ -271,6 +271,12 @@ Manus AI rebuilt their agent framework four times learning these lessons. Their 
 **Compression ratio:** 50 KB input → 2.5 KB context = 20:1. If later steps only read the summary (most common case), no retrieval is needed. If a detail is required, one file read brings in that section (50 bytes instead of the full document).
 
 For the full agent system across 100-turn tasks, the ratio reaches 100:1. The implication: **externalized state is not a compromise. It's strictly better than trying to fit everything in context.**
+
+---
+
+## Externalized State in the Agentic Workflow
+
+The agentic workflow guide's plan files (located at `pepper-v2-app/docs/plans/`) are a direct implementation of externalized state patterns. Each plan file serves as a checkpoint artifact: it specifies tasks with acceptance criteria, tracks completion status via checkboxes, and provides a recovery mechanism if sessions reset. This is externalized state in its most practical form for AI-assisted development.
 
 ---
 
