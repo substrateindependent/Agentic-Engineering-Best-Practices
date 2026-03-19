@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "next-dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--dir", "pepper-v2-app", "dev"],
+      "port": 3000
+    }
+  ]
+}

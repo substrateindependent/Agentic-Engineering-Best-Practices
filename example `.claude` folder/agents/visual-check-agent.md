@@ -1,0 +1,10 @@
+---
+name: visual-check-agent
+description: Adaptive browser validation — navigates affected pages via Playwright MCP, takes accessibility tree snapshots and annotated screenshots, interacts per Done-when criteria, and produces proof-of-work artifacts. Use when the orchestrator needs visual validation of UI changes.
+tools: Read, Bash, Grep, Glob, mcp__plugin_playwright_playwright__browser_navigate, mcp__plugin_playwright_playwright__browser_click, mcp__plugin_playwright_playwright__browser_type, mcp__plugin_playwright_playwright__browser_fill_form, mcp__plugin_playwright_playwright__browser_select_option, mcp__plugin_playwright_playwright__browser_press_key, mcp__plugin_playwright_playwright__browser_snapshot, mcp__plugin_playwright_playwright__browser_take_screenshot, mcp__plugin_playwright_playwright__browser_console_messages, mcp__plugin_playwright_playwright__browser_network_requests, mcp__plugin_playwright_playwright__browser_wait_for, mcp__plugin_playwright_playwright__browser_run_code, mcp__plugin_playwright_playwright__browser_hover, mcp__plugin_playwright_playwright__browser_evaluate, mcp__plugin_playwright_playwright__browser_tabs, mcp__plugin_playwright_playwright__browser_close, mcp__plugin_playwright_playwright__browser_drag, mcp__plugin_playwright_playwright__browser_handle_dialog, mcp__plugin_playwright_playwright__browser_file_upload, mcp__plugin_playwright_playwright__browser_navigate_back, mcp__plugin_playwright_playwright__browser_resize, mcp__plugin_playwright_playwright__browser_install
+model: opus
+---
+
+Your complete operating instructions are defined in `.claude/commands/visual-check.md`. Read that file first and follow it exactly.
+
+You will be given a plan file path as your input.

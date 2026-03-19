@@ -1,0 +1,90 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx prisma migrate dev --name add_sender_rule)",
+      "Bash(npx prisma db push)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx vitest run __tests__/lib/db/sender-rules-migration.test.ts)",
+      "Bash(npx tsc:*)",
+      "Bash(npx tsx:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebSearch",
+      "Bash(node_modules/.bin/tsx:*)",
+      "Bash(npx:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(echo exit: $?:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm vitest:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(test:*)",
+      "Bash(git add:*)",
+      "Bash(git stash:*)",
+      "Bash(ls:*)",
+      "Bash(git status:*)",
+      "Bash(PLAYWRIGHT_BASE_URL=https://pepper-v2.fly.dev npx playwright:*)",
+      "Bash(DATABASE_URL=\"postgresql://neondb_owner:npg_9n2zPNAGihoT@ep-noisy-wildflower-aitfplq4-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require\" npx prisma:*)",
+      "Bash(git checkout main)",
+      "Bash(git pull)",
+      "Bash(grep -r \"test\\\\|demo\\\\|account\" /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/.env*)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(set:*)",
+      "Bash(pnpm eslint:*)",
+      "Bash(pnpm install:*)",
+      "Bash(node:*)",
+      "Bash(mkdir:*)",
+      "Bash(pnpm exec:*)",
+      "mcp__plugin_playwright_playwright__browser_wait_for",
+      "Skill(commit-commands:commit-push-pr)",
+      "Bash(brew list:*)",
+      "Bash(brew install:*)",
+      "Bash(curl -sL https://github.com/cli/cli/releases/download/v2.67.0/gh_2.67.0_macOS_arm64.zip -o /tmp/gh.zip)",
+      "Bash(unzip -o /tmp/gh.zip -d /tmp/gh)",
+      "Read(//tmp/**)",
+      "Bash(/tmp/gh/gh_2.67.0_macOS_arm64/bin/gh pr:*)",
+      "Bash(fly deploy:*)",
+      "Bash(fly logs:*)",
+      "Bash(fly ssh:*)",
+      "Bash(curl:*)",
+      "Bash(head:*)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//opt/**)",
+      "WebFetch(domain:langfuse.com)",
+      "WebFetch(domain:ai-sdk.dev)",
+      "Bash(pnpm audit:*)",
+      "Bash(wc -l /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/canonical/*.md)",
+      "WebFetch(domain:cursor.com)",
+      "Bash(pnpm -C pepper-v2-app run typecheck 2>&1 | tail -5)",
+      "mcp__plugin_playwright_playwright__browser_run_code",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_network_requests",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_close",
+      "Bash(pnpm -C pepper-v2-app run lint 2>&1 | tail -5)",
+      "Bash(cat >> /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/plans/e2e-plan-command-improvements.log.md << 'EOF'\n[08:28] PASS Piece 1 \\(commit: a067219\\)\n[08:28] PASS Piece 2 \\(commit: 395bc65\\)\nEOF)",
+      "Bash(cat >> /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/plans/e2e-plan-command-improvements.log.md << 'EOF'\n[08:34] PASS Piece 3 \\(commit: 2c63709\\)\n[08:34] PASS Piece 4 \\(commit: d0f6958\\)\n[08:34] START Piece 5: Update workflow guide E2E descriptions \\(files: agentic-workflow-guide.md\\)\nEOF)",
+      "Bash(cat >> /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/plans/e2e-plan-command-improvements.log.md << 'EOF'\n[09:41] PASS Piece 5 \\(commit: 0261eae\\)\nEOF)",
+      "Bash(cat >> /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/plans/e2e-plan-command-improvements.log.md << 'EOF'\n[09:43] VERIFY PASS — all criteria met. 1 minor stale reference noted \\(implement.md line 132, outside plan scope\\).\nEOF)",
+      "Bash(cat >> /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/plans/e2e-plan-command-improvements.log.md << 'EOF'\n[09:44] VISUAL CHECK SKIP — no UI-facing changes in plan \\(all markdown/docs\\)\n[09:44] E2E SMOKE SKIP — no E2E-testable changes in plan \\(E2E skip justification in plan\\)\nEOF)",
+      "Bash(cat >> /Users/glennclayton/Documents/GitHub/Pepper-V2/pepper-v2-app/docs/plans/e2e-plan-command-improvements.log.md << 'EOF'\n[09:47] LESSONS — none captured \\(no novel patterns; existing rules cover observations\\)\n[09:47] DONE — 5/5 pieces implemented, verify PASS\nEOF)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd pepper-v2-app && pnpm run lint --fix || true"
+          }
+        ]
+      }
+    ]
+  }
+}
